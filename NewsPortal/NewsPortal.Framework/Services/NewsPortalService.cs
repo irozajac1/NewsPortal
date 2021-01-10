@@ -19,7 +19,7 @@ namespace NewsPortal.Framework.Services
             _saUow = saUow;
         }
 
-        public async Task<IEnumerable<NewsResponse>> GetCameras()
+        public async Task<IEnumerable<NewsResponse>> GetNews()
         {
             List<NewsResponse> result = new List<NewsResponse>();
             try
@@ -51,8 +51,6 @@ namespace NewsPortal.Framework.Services
         {
             try
             {
-                //var camera = await _saUow.GetRepository<Camera>().FirstOrDefault(x => x.SerialNumber.ToLower() == request.SerialNumber.ToLower());
-
                 var new_response = new News
                 {
                     Id = Guid.NewGuid(),
@@ -71,9 +69,42 @@ namespace NewsPortal.Framework.Services
             }
         }
 
-        public Task<IEnumerable<NewsResponse>> SearchDetections(NewsRequest request)
+        public async Task<IEnumerable<NewsResponse>> SearchNews(string title)
         {
-            throw new NotImplementedException();
+            List<NewsResponse> response = new List<NewsResponse>();
+
+            var news = await _saUow.GetRepository<News>().Where(x=>x.Title == title);
+
+            foreach(var item in news)
+            {
+                var news_response = new NewsResponse
+                {
+                    Id = item.Id,
+                    Title = item.Title,
+                    Context = item.Context,
+                    PublishTime = item.PublishTime
+                };
+                response.Add(news_response);
+            }
+            return response;
         }
+
+        public async Task Update(News request)
+        {
+            var news = await _saUow.GetRepository<News>().GetById(request.Id);
+
+            if (news == null)
+                throw new ArgumentNullException("News not found");
+
+            if (!string.IsNullOrEmpty(request.Title)) news.Title = request.Title;
+            if (!string.IsNullOrEmpty(request.Context)) news.Context = request.Context;
+            if (!string.IsNullOrEmpty(request.PublishTime.ToString())) news.PublishTime = request.PublishTime;
+
+            _saUow.GetRepository<News>().Update(news);
+            await _saUow.SaveChangesAsync();
+        }
+
+
     }
 }
+

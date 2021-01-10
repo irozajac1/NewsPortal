@@ -25,11 +25,6 @@ namespace NewsPortal.Framework.Repository
         public async Task<IEnumerable<T>> GetAll()
             => await _dbSet.ToListAsync();
 
-        public IQueryable<T> GetAllSieve() => _dbSet.AsNoTracking(); //to be deleted
-
-        public async Task<int> CountAll() => await _dbSet.CountAsync();
-
-        public async Task<int> CountWhere(Expression<Func<T, bool>> predicate) => await _dbSet.CountAsync(predicate);
 
         public async Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate) => await _dbSet.FirstOrDefaultAsync(predicate);
 
@@ -55,16 +50,6 @@ namespace NewsPortal.Framework.Repository
             _context.Entry(entity).State = EntityState.Modified;
         }
 
-        public virtual IQueryable<T> IncludeAll()
-        {
-            var query = _context.Set<T>().AsQueryable();
-            foreach (var property in _context.Model.FindEntityType(typeof(T)).GetNavigations())
-                query = query.Include(property.Name);
-            return query;
-        }
-
-        public void Delete(T entity)
-            => _dbSet.Remove(entity);
 
         #region IDisposable Support
 

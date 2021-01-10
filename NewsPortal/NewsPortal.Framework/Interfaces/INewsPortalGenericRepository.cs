@@ -11,12 +11,6 @@ namespace NewsPortal.Framework.Interfaces
     {
         Task<IEnumerable<T>> GetAll();
 
-        //IQueryable<T> GetAllSieve();
-
-        Task<int> CountAll();
-
-        Task<int> CountWhere(Expression<Func<T, bool>> predicate);
-
         Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate);
 
         Task<IEnumerable<T>> Where(Expression<Func<T, bool>> predicate);
@@ -27,10 +21,6 @@ namespace NewsPortal.Framework.Interfaces
         void Insert(T entity);
 
         void Update(T entity);
-
-        void Delete(T entity);
-
-        IQueryable<T> IncludeAll();
 
         void BulkInsert(IList<T> entity);
     }

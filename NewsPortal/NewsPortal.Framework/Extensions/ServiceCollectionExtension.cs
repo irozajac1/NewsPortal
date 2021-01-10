@@ -13,7 +13,7 @@ namespace NewsPortal.Framework.Extensions
 {
     public static class ServiceCollectionExtension
     {
-        public static IServiceCollection AddSpartaActiveFramework(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddNewsFramework(this IServiceCollection services, IConfiguration configuration)
         {
             //Connection String
             services.AddDbContext<NewsPortalContext>(options => options.UseSqlServer(configuration.GetConnectionString("NewsPortalDb"), providerOptions => providerOptions.EnableRetryOnFailure()));

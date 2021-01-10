@@ -34,7 +34,7 @@ namespace NewsPortal.UserManagement
             services.AddUserManagementFramework(Configuration);
             
 
-            services.AddSpartaActiveFramework(Configuration);
+            services.AddNewsFramework(Configuration);
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -56,7 +56,7 @@ namespace NewsPortal.UserManagement
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "SpartaPlatformAPI");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "NewsPortal");
                 //c.RoutePrefix = string.Empty;
             });
 

@@ -1,5 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NewsPortal.Framework.Data.Context;
+using NewsPortal.Framework.Interfaces;
+using NewsPortal.Framework.Repository;
+using NewsPortal.Framework.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,17 +16,14 @@ namespace NewsPortal.Framework.Extensions
         public static IServiceCollection AddSpartaActiveFramework(this IServiceCollection services, IConfiguration configuration)
         {
             //Connection String
-            //services.AddDbContext<SpartaActiveContext>(options => options.UseSqlServer(configuration.GetConnectionString("SpartaActiveDb"), providerOptions => providerOptions.EnableRetryOnFailure()), ServiceLifetime.Transient);
+            services.AddDbContext<NewsPortalContext>(options => options.UseSqlServer(configuration.GetConnectionString("NewsPortalDb"), providerOptions => providerOptions.EnableRetryOnFailure()));
 
             //// Services
-            //services.AddScoped<IDetectionService, DetectionService>();
-            //services.AddScoped<IDashboardService, DashboardService>();
-            //services.AddScoped<ICameraService, CameraService>();
-            //services.AddScoped<IMatchService, MatchService>();
-            //services.AddScoped<ILocationService, LocationService>();
+            services.AddScoped<INewsPortalService, NewsPortalService>();
+
 
             //// Repository
-            //services.AddScoped<ISpartaActiveUnitOfWork, SpartaActiveUnitOfWork>();
+            services.AddScoped<INewsPortalUnitOfWork, NewsPortalUnitOfWork>();
 
             return services;
         }

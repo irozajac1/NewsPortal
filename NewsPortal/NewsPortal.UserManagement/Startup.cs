@@ -32,8 +32,7 @@ namespace NewsPortal.UserManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddUserManagementFramework(Configuration);
-
-            //services.AddDbContext<UserManagementContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UserManagementDb"), providerOptions => providerOptions.EnableRetryOnFailure()));
+            
 
             services.AddSpartaActiveFramework(Configuration);
 

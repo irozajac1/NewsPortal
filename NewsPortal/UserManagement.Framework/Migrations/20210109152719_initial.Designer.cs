@@ -10,8 +10,8 @@ using UserManagement.Framework.Context;
 namespace UserManagement.Framework.Migrations
 {
     [DbContext(typeof(UserManagementContext))]
-    [Migration("20210109145407_init")]
-    partial class init
+    [Migration("20210109152719_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

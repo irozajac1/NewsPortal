@@ -12,7 +12,7 @@ namespace NewsPortal.UserManagement.Helpers
     {
         public MappingProfile()
         {
-            //CreateMap<RegisterRequest, User>();
+            CreateMap<RegisterRequest, User>();
             CreateMap<UpdateUserRequest, User>();
 
         }

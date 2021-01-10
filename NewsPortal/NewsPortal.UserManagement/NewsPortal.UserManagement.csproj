@@ -25,12 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\NewsPortal.Framework\NewsPortal.Framework.csproj" />
-    <ProjectReference Include="..\NewsPortal\NewsPortal.csproj" />
     <ProjectReference Include="..\UserManagement.Framework\UserManagement.Framework.csproj" />
   </ItemGroup>
 

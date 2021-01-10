@@ -16,7 +16,7 @@ namespace UserManagement.Framework.Extensions
         public static IServiceCollection AddUserManagementFramework(this IServiceCollection services, IConfiguration configuration)
         {
             //Connection String
-            services.AddDbContext<UserManagementContext>(options => options.UseSqlServer(configuration.GetConnectionString("UserManagementDb"), providerOptions => providerOptions.EnableRetryOnFailure()));
+            services.AddDbContext<UserManagementContext>(options => options.UseSqlServer(configuration.GetConnectionString("UserDb"), providerOptions => providerOptions.EnableRetryOnFailure()));
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserManagementUnitOfWork, UserManagementUnitOfWork>();
 

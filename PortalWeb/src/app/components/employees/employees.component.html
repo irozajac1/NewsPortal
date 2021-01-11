@@ -1,0 +1,11 @@
+<main>
+  <mat-card *ngFor="let emp of Employees; let index = index">
+    <mat-card-header>
+      <mat-card-title>{{ emp.FirstName }} {{ emp.LastName }}</mat-card-title>
+      <mat-card-subtitle>{{ emp.UserName }}: {{ emp.Role }} </mat-card-subtitle>
+    </mat-card-header>
+    <hr>
+    <mat-card-content>
+    </mat-card-content>
+  </mat-card>
+</main>

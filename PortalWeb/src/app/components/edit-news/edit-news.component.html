@@ -1,0 +1,18 @@
+<form [formGroup]="newsForm" class="example-form" (ngSubmit)="onSubmitNews(newsForm.value)">
+
+  <mat-card class="messagecontet">
+    <mat-form-field class="message-full-width" appearance="standard">
+      <input matInput placeholder="Title" formControlName="Title">
+    </mat-form-field>
+
+    <mat-form-field class="message-full-width" appearance="standard">
+      <input matInput placeholder="Content" formControlName="Context">
+    </mat-form-field>
+  </mat-card>
+
+  <div class="sendmessagebtn" style="margin-top: 10px;">
+    <button mat-mini-fab color="white" matTooltip="Pošalji" type="submit">
+      <mat-icon aria-hidden="false" aria-label=" " class="sendicon">send</mat-icon>
+    </button>
+  </div>
+</form>

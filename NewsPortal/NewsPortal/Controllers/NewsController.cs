@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using NewsPortal.Framework.Data.Entities;
 using NewsPortal.Framework.Dtos.Request;
 using NewsPortal.Framework.Interfaces;
+using UserManagement.Framework.Helpers;
 using AuthorizeAttribute = UserManagement.Framework.Helpers.AuthorizeAttribute;
 
 namespace NewsPortal.Controllers
@@ -23,7 +24,7 @@ namespace NewsPortal.Controllers
         {
             _newsService = newsService;
         }
-        //[AuthorizeAttribute(Roles.Admin, Roles.User)]
+        //[AuthorizeAttribute(Roles.Admin)]
         [HttpGet]
         public async Task<IActionResult> GetNews()
         {
@@ -31,7 +32,7 @@ namespace NewsPortal.Controllers
             return Ok(news);
         }
 
-        //[AuthorizeAttribute(Roles.Admin, Roles.User)]
+        [AuthorizeAttribute(Roles.Admin)]
         [HttpPost("insert")]
         public async Task<IActionResult> InsertNews(NewsRequest request)
         {
@@ -39,7 +40,7 @@ namespace NewsPortal.Controllers
             return Ok();
         }
 
-        //[AuthorizeAttribute(Roles.Admin)]
+        [AuthorizeAttribute(Roles.Admin)]
         [HttpPut("update")]
         public async Task<IActionResult> Update(News request)
         {

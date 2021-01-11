@@ -41,7 +41,7 @@ namespace NewsPortal.UserManagement.Controllers
             return Ok(response);
         }
 
-        [AuthorizeAttribute(Roles.Admin)]
+        //[AuthorizeAttribute(Roles.Admin)]
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterRequest request)
         {

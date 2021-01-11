@@ -1,0 +1,29 @@
+<main id="news">
+  <div class="documentationContent">
+    <span *ngFor="let novost of News" class="dialogmessage">
+      <mat-card class="message-card">
+        <mat-card-title>Objavljeno: {{ novost.PublishDate | date:"medium" }}</mat-card-title>
+        <mat-card-content>
+          <div class="messagetext">
+            <mat-card>
+              {{novost.Title}}
+            </mat-card>
+          </div>
+
+          <div class="messagetext">
+            <mat-card>
+              {{novost.Context}}
+            </mat-card>
+          </div>
+          <mat-card-actions>
+            <div class="allowbtn">
+              <button mat-button color="primary" (click)="editNews(novost)">
+                <fa-icon  [icon]="faEdit" class="fa-lg"></fa-icon>
+              </button>
+            </div>
+          </mat-card-actions>
+        </mat-card-content>
+      </mat-card>
+    </span>
+  </div>
+</main>

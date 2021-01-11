@@ -1,0 +1,39 @@
+  <div style="max-height: 90vh;">
+    <div class="close">
+      <button mat-raised-button (click)="closeClick()">
+        <mat-icon id="close-icon">close</mat-icon>
+      </button>
+    </div>
+
+    <!-- <form [formGroup]="messageForm" class="example-form " (ngSubmit)="onSubmit()">
+      <mat-form-field class="selectedgroup">
+        <mat-label>Izaberite grupu</mat-label>
+        <mat-select name="Group" matSelect formControlName="Group" required>
+          <mat-option  value="uposlenici">Zaposlenici</mat-option>
+          <mat-option *ngIf="isAdmin" value="novosti">Novosti</mat-option>
+        </mat-select>
+        <mat-error *ngIf="messageForm.invalid">*Polje je obavezno</mat-error>
+      </mat-form-field>
+</form> -->
+
+
+    <form [formGroup]="newsForm" class="example-form " (ngSubmit)="onSubmitNews(newsForm.value)">
+
+      <mat-card class="messagecontet">
+        <mat-form-field class="message-full-width" appearance="standard">
+          <input matInput placeholder="Title" formControlName="Title">
+        </mat-form-field>
+
+        <mat-form-field class="message-full-width" appearance="standard">
+          <input matInput placeholder="Content" formControlName="Context">
+        </mat-form-field>
+
+      </mat-card>
+
+      <div class="sendmessagebtn" style="margin-top: 10px;">
+        <button mat-mini-fab color="white" matTooltip="Send" type="submit">
+          <mat-icon aria-hidden="false" aria-label=" " class="sendicon">send</mat-icon>
+        </button>
+      </div>
+    </form>
+  </div>
